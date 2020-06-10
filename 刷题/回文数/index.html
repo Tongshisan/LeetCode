@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一版
+        function isPalindrome(x) {
+            if (x < 0) return false
+            if (0 <= x < 10) return true
+            let str = String(x)
+            for (let i = 0, len = str.length; i < len / 2; i++) {
+                if (str[i] !== str[len - i - 1]) return false
+            }
+            return true
+        }
+        // 报错  
+        // 0 <= x < 10    写法错误
+
+
+
+        // 第二版    正确
+        function isPalindrome2(x) {
+            if (x < 0) return false
+            if (0 <= x && x < 10) return true
+            let str = String(x)
+            for (let i = 0, len = str.length; i < len / 2; i++) {
+                if (str[i] !== str[len - i - 1]) return false
+            }
+            return true
+        }
+
+        // 第二种
+        function isPalindrome3(x) {
+            let arr = String(x).split('')
+            for (let i = 0, len = arr.length; i < len; i++) {
+                if (arr[i] !== arr[len - i - 1]) {
+                    return false
+                }
+            }
+            return true
+        }
+        console.log(isPalindrome2(15))
+    </script>
+</body>
+
+</html>

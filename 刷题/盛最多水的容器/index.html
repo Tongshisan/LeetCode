@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一版   
+        function maxArea(height) {
+            let area = 0
+            for (let i = 0, len = height.length; i < len - 1; i++) {
+                for (let j = i + 1; j < len; j++) {
+                    let minHeight = height[i] > height[j] ? height[j] : height[i]
+                    area = minHeight * (j - i) > area ? minHeight * (j - i) : area
+                }
+            }
+            return area
+        }
+        // 成功   执行用时 788ms  (27.82%)       内存 36.2 MB (11.76)
+    </script>
+</body>
+
+</html>
