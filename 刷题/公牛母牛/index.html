@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function getHint(secret, guess) {
+            let numA = 0
+            let numB = 0
+            let A = secret.split('')
+            let B = guess.split('')
+            for (let i = 0, len = A.length; i < len;) {
+                if (A[i] === B[i]) {
+                    A.splice(i, 1)
+                    B.splice(i, 1)
+                } else {
+                    i++
+                }
+            }
+            B = [new Set(B)]
+            for (let i = 0, len = B.length; i < len; i++) {
+                if (A.includes(B[i])) numB++
+            }
+
+            return `${numA}A${numB}B`
+        }
+        // 超出时间限制 ,   第一个for循环为死循环   删除 i 位置元素后忘记 把 len减去1
+
+
+        // 第二版
+        function getHint2(secret, guess) {
+            let numA = 0
+            let numB = 0
+            let A = secret.split('')
+            let B = guess.split('')
+            for (let i = 0, len = A.length; i < len;) {
+                if (A[i] === B[i]) {
+                    A.splice(i, 1)
+                    B.splice(i, 1)
+                    numA++
+                    len--
+                } else {
+                    i++
+                }
+            }
+            B = [...new Set(B)]
+            for (let i = 0, len = B.length; i < len; i++) {
+                if (A.includes(B[i])) numB++
+            }
+
+            return `${numA}A${numB}B`
+        }
+        // 错误
+        //  用例 1122 2211 
+        // 正确答案  0A4B     
+        // 输出   0A2B
+
+        // 第三版
+        function getHint3(secret, guess) {
+            let numA = 0
+            let numB = 0
+            let A = secret.split('')
+            let B = guess.split('')
+            for (let i = 0, len = A.length; i < len;) {
+                if (A[i] === B[i]) {
+                    A.splice(i, 1)
+                    B.splice(i, 1)
+                    numA++
+                    len--
+                } else {
+                    i++
+                }
+            }
+            for (let i = 0, len = B.length; i < len; i++) {
+                let index = A.indexOf(B[i])
+                if (index) {
+                    A.splice(index, 1)
+                    numB++
+                }
+            }
+
+            return `${numA}A${numB}B`
+        }
+        // 错误    if(index)     应该换为  if(index !== -1) .....
+        // 因为后面 index 可能为0,
+
+        // 第四版
+        function getHint4(secret, guess) {
+            let numA = 0
+            let numB = 0
+            let A = secret.split('')
+            let B = guess.split('')
+            for (let i = 0, len = A.length; i < len;) {
+                if (A[i] === B[i]) {
+                    A.splice(i, 1)
+                    B.splice(i, 1)
+                    numA++
+                    len--
+                } else {
+                    i++
+                }
+            }
+            for (let i = 0, len = B.length; i < len; i++) {
+                let index = A.indexOf(B[i])
+                if (index !== -1) {
+                    A.splice(index, 1)
+                    numB++
+                }
+            }
+
+            return `${numA}A${numB}B`
+        }
+
+        // 通过  
+        // 执行用时  84ms   打败 51.50%
+        // 内存消耗    38.1 MB    打败 100%
+    </script>
+</body>
+
+</html>
