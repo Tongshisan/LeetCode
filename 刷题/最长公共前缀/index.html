@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function longestCommonPrefix(strs) {
+            let arr = strs[0] ? strs[0].split('') : ''
+            for (let i = 0, len = arr.length; i < len; i++) {
+                for (let j = 1, l = strs.length; j < l; j++) {
+                    if (!strs[j][i] || strs[j][i] !== arr[i]) {
+                        return arr.slice(0, i).join('')
+                    }
+                }
+            }
+            return arr.length > 0 ? arr.join('') : ''
+        }
+
+        // 通过
+
+        // 第二种
+        function longestCommonPrefix2(strs) {
+            if (strs.length === 0) return ''
+            let str = strs[0]
+            for (let i = 0, l = str.length; i < l; i++) {
+                for (let j = 1, len = strs.length; j < len; j++) {
+                    if (strs[j][i] !== str[i]) {
+                        return str.substring(0, i)
+                    }
+                }
+            }
+            return str
+        }
+    </script>
+</body>
+
+</html>
