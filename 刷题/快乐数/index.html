@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function isHappy(n) {
+            let str = String(n)
+            let res = 0
+            for (let i = 0, len = str.length; i < len; i++) {
+                res += Number(str[i] * str[i])
+            }
+            if (res === 1) return true
+            if (res === n) return false
+            return isHappy(res)
+        }
+        // 执行超时
+        // 不能靠判断 res===n 就 return false
+
+
+        // 第二版
+        function isHappy2(n) {
+            let str = `${n}`
+            let res = 0
+            let arr = []
+            for (let i = 0, len = str.length; i < len; i++) {
+                res += Number(str[i] * str[i])
+            }
+            if (res === 1) return true
+            if (arr.includes(res)) return false
+            arr.push(res)
+            return isHappy2(res)
+        }
+
+        // 测试
+        console.log(isHappy2(2))
+
+        // 递归数组就空了  .....
+        // ...
+        // ...
+
+
+        // 第三版
+        // 不知道还能自己再写函数, 太难了
+        function isHappy3(n) {
+            let res = getSum(n)
+            let arr = []
+            while(res !== 1) {
+                if(arr.includes(res)) return false
+                arr.push(res)
+                res = getSum(res)
+            }
+            return true
+        }
+
+        function getSum(n) {
+            let str = `${n}`
+            let sum = 0
+            for(let i = 0, len = str.length; i < len; i++) {
+                sum += str[i] * str[i]
+            }
+            return sum
+        }
+    </script>
+</body>
+
+</html>

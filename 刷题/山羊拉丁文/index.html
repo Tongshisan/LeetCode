@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        function toGoatLatin(S) {
+            let arr = S.split(' ')
+            let res = []
+            for (let i = 0, len = arr.length; i < len; i++) {
+                let str = ''
+                if (/^[aeiou]/i.test(arr[i])) {
+                    str = `${arr[i]}ma`
+                } else {
+                    str = `${arr[i].substring(1)}${arr[i][0]}ma`
+                }
+                res.push(`${str}${'a'.repeat(i + 1)}`)
+            }
+            return res.join(' ')
+        }
+        // 通过
+        // 执行用时   68ms    69.30%
+        // 内存消耗    33.2MB    100.00%
+    </script>
+</body>
+
+</html>

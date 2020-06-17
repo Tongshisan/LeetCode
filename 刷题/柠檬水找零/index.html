@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // 第一版
+        function lemonadeChange(bills) {
+            if (bills[0] !== 5) return false
+            let arr5 = []
+            let arr10 = []
+            for (let i = 1, len = bills.length; i < len; i++) {
+                if (bills[i] === 5) arr5.push(5)
+                if (bills[i] === 10) {
+                    if (!arr5.length) {
+                        return false
+                    } else {
+                        arr5.pop()
+                        arr10.push(10)
+                    }
+                }
+                if (bills[i] === 20) {
+                    if (!arr5.length) {
+                        return false
+                    } else if (arr5.length < 3 && arr10.length === 0) {
+                        return false
+                    } else if (arr5.length > 3 && arr10.length === 0) {
+                        arr5.splice(0, 3)
+                    } else if (arr10.length > 1) {
+                        arr5.pop()
+                        arr10.pop()
+                    }
+                }
+            }
+            return true
+        }
+        // 未通过  
+        // 边界条件看错
+        // 初始值 arr5 应该为 [5]
+
+
+        // 第二版
+        function lemonadeChange(bills) {
+            if (bills[0] !== 5) return false
+            let arr5 = [5]
+            let arr10 = []
+            for (let i = 1, len = bills.length; i < len; i++) {
+                if (bills[i] === 5) arr5.push(5)
+                if (bills[i] === 10) {
+                    if (!arr5.length) {
+                        return false
+                    } else {
+                        arr5.pop()
+                        arr10.push(10)
+                    }
+                }
+                if (bills[i] === 20) {
+                    if (!arr5.length) {
+                        return false
+                    } else if (arr5.length < 3 && arr10.length === 0) {
+                        return false
+                    } else if (arr5.length >= 3 && arr10.length === 0) {    
+                        arr5.splice(0, 3)
+                    } else if (arr10.length > 0) {
+                        arr5.pop()
+                        arr10.pop()
+                    }
+                }
+            }
+            return true
+        }
+
+        // 通过
+        // 运行时间 80ms   48.20%
+        // 内存消耗  38.3   50.00%
+    </script>
+</body>
+
+</html>
