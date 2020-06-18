@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 第一版
+        function luckyNumbers(matrix) {
+            // arr 存放列数组
+            let arr = []
+            // 返回的最终结果
+            let res = []
+            // 每一行最小的值 数组
+            let minX = []
+            // 每一列最大值组成的数组
+            let maxY = []
+            // 将每一列组成数组放入 arr 中
+            for (let i = 0, len = matrix[0].length; i < len; i++) {
+                arr[i] = []
+                for (let j = 0, l = matrix.length; j < l; j++) {
+                    arr[i].push(matrix[j][i])
+                }
+            }
+            // 计算每一行最小值
+            for (let i = 0, len = matrix.length; i < len; i++) {
+                minX.push(Math.min(...matrix[i]))
+            }
+            // 计算每一列最大值
+            for (let i = 0, len = arr.length; i < len; i++) {
+                maxY.push(Math.max(...arr[i]))
+            }
+            // 遍历 最小值数组,
+            // 因为传入数组中不存在重复数字
+            // 所以最大值数组和最小值数组的交集就是最终的结果
+            for (let i = 0, len = minX.length; i < len; i++) {
+                if (maxY.includes(minX[i])) res.push(minX[i])
+            }
+            return res
+        }
+
+        // 通过
+        // 执行用时  92ms   30.77%
+        // 内存 38.9 MB  100.00%
+    </script>
+</body>
+
+</html>
