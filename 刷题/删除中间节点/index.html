@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>实现一种算法，删除单向链表中间的某个节点（即不是第一个或最后一个节点），假定你只能访问该节点。</h1>
+
+    <script>
+        function deleteNode(node) {
+            let current = node
+            node.val = current.next.val
+            node.next = current.next.next
+        }
+
+    // 通过
+    // 84ms  38.04
+    // 37.7MB   100.00%
+    </script>
+</body>
+</html>
