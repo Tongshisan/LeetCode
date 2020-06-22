@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>实现一个算法，确定一个字符串 s 的所有字符是否全都不同。</h1>
+    <script>
+
+        function isUnique(astr) {
+            if (astr.length < 2) return true
+            return astr.length === new Set(astr.split('')).size
+        }
+
+        // 通过
+        // 执行用时  56ms   96.05%
+        // 内存  32.3MB   100.00%
+    </script>
+</body>
+
+</html>

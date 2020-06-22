@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。</h1>
+
+    <script>
+        // 双指针
+        function kthToLast(head, k) {
+            let left = head
+            let right = head
+            while (k > 0) {
+                right = right.next
+                k--
+            }
+            while (right !== null) {
+                left = left.next
+                right = right.next
+            }
+
+            return left.val
+        }
+        // 数组
+        function kthToLast2(head, k) {
+            let arr = []
+            while(head) {
+                arr.push(head.val)
+                head = head.next
+            }
+            return arr[arr.length-k]
+        }
+    </script>
+</body>
+
+</html>

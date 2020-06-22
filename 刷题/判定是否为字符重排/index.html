@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定两个字符串 s1 和 s2，请编写一个程序，确定其中一个字符串的字符重新排列后，能否变成另一个字符串</h1>
+
+    <script>
+        function CheckPermutation(s1, s2) {
+            if (s1.length !== s2.length) return false
+
+            for (let i = 0, len = s1.length; i < len; i++) {
+                if (!s2.includes(s1[i])) return false
+            }
+
+            return true
+        }
+
+        // 错误  
+        // 
+
+        // 第二版
+        function CheckPermutation2(s1, s2) {
+            if (s1.length !== s2.length) return false
+            let arr = s2.split('')
+            for (let i = 0, len = s1.length; i < len; i++) {
+                let index = arr.indexOf(s1[i])
+                if (index === -1) {
+                    return false
+                } else {
+                    arr.splice(index, 1)
+                }
+            }
+
+            return true
+        }
+    </script>
+</body>
+
+</html>
