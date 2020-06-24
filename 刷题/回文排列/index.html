@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个字符串, 判断是否为某个回文排列的排列之一</h1>
+
+    <script>
+        // 第一版
+        function canPermutePalindrome(s) {
+            let arr = s.split('')
+            let num = 0
+            for (let i = 0, len = arr.length; i < len;) {
+                let str = arr.splice(i, 1)
+                let index = arr.indexOf(str[0])
+                if (index !== -1) {
+                    arr.splice(index, 1)
+                    len -= 2
+                } else {
+                    i++
+                    num++
+                    if (num > 1) return false
+                }
+            }
+            return true
+        }
+        // 通过
+        // 60 ms    91.19%
+        // 32.1MB   100.00%
+    </script>
+</body>
+
+</html>
