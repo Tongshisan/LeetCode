@@ -20,6 +20,17 @@
         // 通过
         // 执行用时  56ms   96.05%
         // 内存  32.3MB   100.00%
+
+        // 不使用额外的数据结构
+        function isUnique2(astr) {
+            for(let i = 0, len = astr.length; i < len-1; i++) {
+                for(let j = i+1; j < len; j++) {
+                    if(astr[j] === astr[i]) return false
+                }
+            }
+
+            return true
+        }
     </script>
 </body>
 
