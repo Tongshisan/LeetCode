@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>数组nums包含从0到n的所有整数，但其中缺了一个。请编写代码找出那个缺失的整数。你有办法在O(n)时间内完成吗？</h1>
+
+    <script>
+        function missingNumber(nums) {
+            nums.sort((a, b) => a - b)
+            if (nums[0] !== 0) return 0
+            for (let i = 1, len = nums.length; i < len; i++) {
+                if (nums[i] - nums[i - 1] !== 1) return nums[i] - 1
+            }
+            return nums[nums.length - 1] + 1
+        }
+
+        // 92 ms   50.00%
+        // 37.4 MB 100.00%
+    </script>
+</body>
+
+</html>
