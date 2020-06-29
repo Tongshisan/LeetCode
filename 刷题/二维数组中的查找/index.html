@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>在一个 n * m 的二维数组中，每一行都按照从左到右递增的顺序排序，每一列都按照从上到下递增的顺序排序。请完成一个函数，输入这样的一个二维数组和一个整数，判断数组中是否含有该整数。</h1>
+
+    <script>
+        function findNumberIn2DArray(matrix, target) {
+            for (let i = 0, len = matrix.length; i < len; i++) {
+                if (matrix[i].includes(target)) return true
+            }
+
+            return false
+        }
+
+        // 通过 
+        // 68 ms  90.15%
+        // 34.7 MB  100.00%
+    </script>
+</body>
+
+</html>

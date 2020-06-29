@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。</h1>
+    <script>
+        function printNumbers(n) {
+            let res = []
+            let num = 0
+            for (let i = 0; i < n; i++) {
+                num += `9`
+            }
+            for (let i = 1; i <= Number(num); i++) {
+                res.push(i)
+            }
+            return res
+        }
+
+        // 通过
+        // 128 ms  68.17%
+        // 45.4 MB  100.00%
+    </script>
+</body>
+
+</html>

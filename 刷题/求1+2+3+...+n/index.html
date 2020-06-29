@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>求 1+2+...+n ，要求不能使用乘除法、for、while、if、else、switch、case等关键字及条件判断语句（A?B:C）。</h1>
+
+    <script>
+        function sumNums(n) {
+            let arr = []
+            let res = 0
+            arr.length = n
+            arr.fill(0)
+            arr.map((item, index) => res += index)
+            return res + n
+        }
+        // 72 ms   49.936%
+        // 35.7 MB    100.00%
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>在一个长度为 n 的数组 nums 里的所有数字都在 0～n-1 的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。</h1>
+    <script>
+        function findRepeatNumber(nums) {
+            nums.sort((a, b) => a - b)
+            for (let i = 0, len = nums.length; i < len; i++) {
+                if (nums[i] === nums[i + 1]) return nums[i]
+            }
+        }
+
+        // 通过
+        // 92 ms   48.87%
+        // 40.8 MB   100.00%
+    </script>
+</body>
+
+</html>

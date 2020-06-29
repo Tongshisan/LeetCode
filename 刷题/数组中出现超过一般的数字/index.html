@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。</h1>
+    <h1>你可以假设数组是非空的，并且给定的数组总是存在多数元素。</h1>
+
+    <script>
+        function majorityElement(nums) {
+            nums.sort((a, b) => a - b)
+            let len = nums.length
+            let res = 1
+            for (let i = 0; i < len; i++) {
+                if (nums[i + 1] === nums[i]) res++
+                if (res > len / 2) return nums[i]
+            }
+        }
+
+        // 通过
+        // 84ms   47.25%
+        // 38.3 MB    100.00%
+    </script>
+</body>
+
+</html>
