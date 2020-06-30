@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>在字符串 s 中找出第一个只出现一次的字符。如果没有，返回一个单空格。 s 只包含小写字母。</h1>
+
+    <script>
+        function firstUniqChar(s) {
+            for (let i = 0, len = s.length; i < len; i++) {
+                if (s.indexOf(s[i]) === s.lastIndexOf(s[i])) return s[i]
+            }
+
+            return ''
+        }
+
+        // 116ms  56.04%
+        // 37.9MB   100.00%
+    </script>
+</body>
+
+</html>

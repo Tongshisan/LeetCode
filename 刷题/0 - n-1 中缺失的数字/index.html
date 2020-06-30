@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>一个长度为n-1的递增排序数组中的所有数字都是唯一的，并且每个数字都在范围0～n-1之内。在范围0～n-1内的n个数字中有且只有一个数字不在该数组中，请找出这个数字</h1>
+
+    <script>
+        function missingNumber(nums) {
+            if (nums[0] !== 0) return 0
+            let len = nums.length
+            if (nums[len - 1] === len - 1) return len
+
+            for (let i = 1; i < len; i++) {
+                if (nums[i] - nums[i - 1] !== 1) return nums[i] - 1
+            }
+        }
+
+        // 84 ms   28.36%
+        // 37 MB   100.00%
+    </script>
+</body>
+
+</html>
