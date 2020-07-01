@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>输入一个整型数组，数组里有正数也有负数。数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。</h1>
+
+    <script>
+        function maxSubArray(nums) {
+            let max = nums[0]
+            let val = 0
+            for (let i = 0, len = nums.length; i < len; i++) {
+                val += nums[i]
+                max = Math.max(max, val)
+                val = Math.max(0, val)
+            }
+
+            return max
+        }
+        // 84ms  48.61%
+        // 39MB  100.00%
+    </script>
+</body>
+
+</html>

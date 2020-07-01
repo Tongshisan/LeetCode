@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>在一个数组 nums 中除一个数字只出现一次之外，其他数字都出现了三次。请找出那个只出现一次的数字。</h1>
+
+    <script>
+        function singleNumber(nums) {
+            nums.sort((a, b) => a - b)
+            let len = nums.length
+            if (nums[0] !== nums[1]) return nums[0]
+            if (nums[len - 1] !== nums[len - 2]) return nums[len - 1]
+
+            for (let i = 1; i < len - 1; i++) {
+                if (nums[i] !== nums[i - 1] && nums[i] !== nums[i + 1]) return nums[i]
+            }
+        }
+
+        // 124 ms  26.62%
+        // 38.3 MB   100.00%
+    </script>
+</body>
+
+</html>
