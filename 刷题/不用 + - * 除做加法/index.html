@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>写一个函数，求两个整数之和，要求在函数体内不得使用 “+”、“-”、“*”、“/” 四则运算符号。 </h1>
+
+    <script>
+        function add(a, b) {
+            if (a === 0) return b
+            if (b === 0) return a
+            let newA = a ^ b
+            let newB = (a & b) << 1
+            return add(newA, newB)
+        }
+
+        // 68ms   57.81%
+        // 32.4 MB  100.00%
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>输入一个链表的头节点，从尾到头反过来返回每个节点的值（用数组返回）。</h1>
+
+    <script>
+        function reversePrint(head) {
+            let res = []
+            while (head) {
+                res.push(head.val)
+                head = head.next
+            }
+            return res.reverse()
+        }
+
+        // 76 ms   81.82%
+
+        // 36.3 MB  100.00%
+    </script>
+</body>
+
+</html>
