@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        function rob(nums) {
+            const len = nums.length
+            if(len === 0) return 0
+            let dp = []
+            dp[0] = 0
+            dp[1] = nums[1]
+            for(let i = 0; i <= len; i++) {
+                dp[i] = Math.max(dp[i-1], dp[i-2]+nums[i-1])
+            }
+
+            return dp[len]
+        }
+
+        // dp[i] 表示在第 i 间房子获得的最大金额  (从一开始)
+        // 64 ms  86.28%
+        // 32.6 MB  100.00%
+    </script>
+</body>
+</html>
