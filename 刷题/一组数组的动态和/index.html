@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给你一个数组 nums 。数组「动态和」的计算公式为：runningSum[i] = sum(nums[0]…nums[i])</h1>
+
+    <script>
+        function runningSum(nums) {
+            let sum = 0
+            let res = []
+            for (let i = 0, len = nums.length; i < len; i++) {
+                sum += nums[i]
+                res.push(sum)
+            }
+
+            return res
+        }
+
+        // 92ms   11.55%
+        // 35.1 MB  100.00%
+    </script>
+</body>
+
+</html>
