@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>你正在使用一堆木板建造跳水板。有两种类型的木板，其中长度较短的木板长度为shorter，长度较长的木板长度为longer。你必须正好使用k块木板。编写一个方法，生成跳水板所有可能的长度</h1>
+    <h1>返回的长度需要从小到大排列。</h1>
+    <script>
+        function divingBoard(shorter, longer, k) {
+            if (k === 0) return []
+            let res = []
+            for (let i = 0; i <= k; i++) {
+                res.push(shorter * (k - i) + longer * i)
+            }
+            return [...new Set(res)]
+        }
+        //  180ms  52.19%
+        // 53.3 MB  100.00%
+    </script>
+</body>
+
+</html>
