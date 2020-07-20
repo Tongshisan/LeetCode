@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</h1>
+    <h1>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish</h1>
+    <h1>问总共有多少条不同的路径？</h1>
+
+    <script>
+        function uniquePaths(m, n) {
+            let arr = []
+            for (let i = 0; i < m; i++) {
+                arr[i] = []
+                for (let j = 0; j < n; j++) {
+                    arr[i][j] = 0
+                }
+            }
+            for (let i = 0; i < m; i++) {
+                for (let j = 0; j < n; j++) {
+                    if (i === 0 && j === 0) {
+                        arr[i][j] = 0
+                    } else if (i === 0 || j === 0) {
+                        arr[i][j] = 1
+                    } else {
+                        arr[i][j] = arr[i - 1][j] + arr[i][j - 1]
+                    }
+                }
+            }
+            return arr[m - 1][n - 1]
+        }
+
+
+        // 错误 
+        // 错误用例  
+        // 输入  1  1
+        // 输出 0 
+        // 正确输出 1
+
+        // 修正版
+        function uniquePaths2(m, n) {
+            let arr = []
+            for (let i = 0; i < m; i++) {
+                arr[i] = []
+                for (let j = 0; j < n; j++) {
+                    arr[i][j] = 0
+                }
+            }
+            for (let i = 0; i < m; i++) {
+                for (let j = 0; j < n; j++) {
+                    if (i === 0 || j === 0) {
+                        arr[i][j] = 1
+                    } else {
+                        arr[i][j] = arr[i - 1][j] + arr[i][j - 1]
+                    }
+                }
+            }
+            return arr[m - 1][n - 1]
+        }
+
+        // 通过
+        // 88ms  12.04%
+        // 37.8MB   33.33%
+
+    </script>
+</body>
+
+</html>
