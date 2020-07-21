@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> 给定一个三角形，找出自顶向下的最小路径和。每一步只能移动到下一行中相邻的结点上。</h1>
+    <h1>相邻的结点 在这里指的是 下标 与 上一层结点下标 相同或者等于 上一层结点下标 + 1 的两个结点。</h1>
+    <script>
+        function minimumTotal(triangle) {
+            let dp = []
+            for (let i = 0, len = triangle.length; i < len; i++) {
+                dp[i] = []
+            }
+            dp[0][0] = triangle[0][0]
+            for (let i = 1, len = triangle.length; i < len; i++) {
+                for (let j = 0; j <= i; j++) {
+                    if (j === 0) {
+                        dp[i][j] = dp[i - 1][j] + triangle[i][j]
+                    } else if (i === j) {
+                        dp[i][j] = dp[i - 1][j - 1] + triangle[i][j]
+                    } else {
+                        dp[i][j] = Math.min(dp[i - 1][j - 1] + triangle[i][j], dp[i - 1][j] + triangle[i][j])
+                    }
+                }
+            }
+            return Math.min(...dp[dp.length - 1])
+        }
+
+        // 92 ms   13.15%
+        // 38.8 MB  50.00%
+    </script>
+</body>
+
+</html>
