@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</h1>
+    <h1>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</h1>
+
+    <script>
+        function twoSum(nums, target) {
+            let map = {}
+            let dis
+            for (let i = 0, len = nums.length; i < len; i++) {
+                dis = target - nums[i]
+                if (map[dis] !== undefined) return [i, map[dis]]
+                map[nums[i]] = i
+            }
+        }
+
+        // 84 ms   63.80 %
+        // 38.5 MB   5.08%
+    </script>
+</body>
+
+</html>

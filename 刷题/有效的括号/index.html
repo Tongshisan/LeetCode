@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。</h1>
+    <h1>有效字符串需满足：</h1>
+    <ul>
+        <li>左括号必须用相同类型的右括号闭合。</li>
+        <li>左括号必须以正确的顺序闭合</li>
+    </ul>
+
+    <script>
+        function isValid(s) {
+            let map = { ')': '(', ']': '[', '}': '{' }
+            let len = s.length
+            if (len % 2) return false
+            let arr = []
+            for (let i = 0; i < len; i++) {
+                if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
+                    arr.push(s[i])
+                } else {
+                    if (arr.pop() !== map[s[i]]) return false
+                }
+            }
+            if (arr.length) return false
+            return true
+        }
+    </script>
+</body>
+
+</html>
