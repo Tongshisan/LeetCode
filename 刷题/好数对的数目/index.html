@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给你一个整数数组 nums 。</h1>
+    <h1>如果一组数字 (i,j) 满足 nums[i] == nums[j] 且 i < j ，就可以认为这是一组 好数对 。</h1> <h1>返回好数对的数目</h1>
+    <script>
+        function numIdenticalPairs(nums) {
+            let res = 0
+            for (let i = 0, len = nums.length; i < len - 1; i++) {
+                for (let j = i + 1; j < len; j++) {
+                    if (nums[i] === nums[j]) res++
+                }
+            }
+            return res
+        }
+
+        // 104 ms   5.36%
+        // 37.3 MB  100.00%
+        // 有点慢
+
+        function numIdenticalPairs2(nums) {
+            let res = 0
+            for (let i = 0, len = nums.length; i < len; i++) {
+                res += (nums.slice(i + 1).filter((item) => item === nums[i])).length
+            }
+            return res
+        }
+
+        // 两个时间一样
+    </script>
+</body>
+
+</html>
