@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个字符串S，通过将字符串S中的每个字母转变大小写，我们可以获得一个新的字符串。返回所有可能得到的字符串集合。</h1>
+
+    <script>
+        var letterCasePermutation = function (S) {
+            let res = []
+            function backTrack(start, s) {
+                res.push(s)
+                for (let i = start, len = s.length; i < len; i++) {
+                    if (s[i] >= 'a' && s[i] <= 'z') {
+                        backTrack(i + 1, `${s.slice(0, i)}${s[i].toUpperCase()}${s.slice(i + 1)}`)
+                    } else if (s[i] >= 'A' && s[i] <= 'Z') {
+                        backTrack(i + 1, `${s.slice(0, i)}${s[i].toLowerCase()}${s.slice(i + 1)}`)
+                    }
+                }
+            }
+            backTrack(0, S)
+            return res
+        };
+
+        // 104 ms  29.79%
+        // 41.1 MB  75.00%
+    </script>
+</body>
+
+</html>
