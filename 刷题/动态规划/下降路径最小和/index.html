@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个方形整数数组 A，我们想要得到通过 A 的下降路径的最小和。</h1>
+    <h1>下降路径可以从第一行中的任何元素开始，并从每一行中选择一个元素。在下一行选择的元素和当前行所选元素最多相隔一列。</h1>
+
+    <script>
+        var minFallingPathSum = function (A) {
+            let dp = []
+            let m = A.length
+            let n = A[0].length
+            for (let i = 0; i < m; i++) {
+                dp[i] = []
+                for (let j = 0; j < n; j++) {
+                    dp[i][j] = 0
+                }
+            }
+            for (let i = 0; i < m; i++) {
+                for (let j = 0; j < n; j++) {
+                    if (i === 0 && j === 0) {
+                        dp[0][0] = A[0][0]
+                    } else if (i === 0) {
+                        dp[0][j] = A[0][j]
+                    } else if (j === 0) {
+                        dp[i][0] = Math.min(dp[i - 1][0] + A[i][0], dp[i - 1][j + 1] + A[i][0])
+                    } else if (j === n - 1) {
+                        dp[i][n - 1] = Math.min(dp[i - 1][n - 2] + A[i][n - 1], dp[i - 1][n - 1] + A[i][n - 1])
+                    } else {
+                        dp[i][j] = Math.min(dp[i - 1][j - 1] + A[i][j], dp[i - 1][j] + A[i][j], dp[i - 1][j + 1] + A[i][j])
+                    }
+                }
+            }
+            return Math.min(...dp[m - 1])
+        };
+
+        // 88ms   38.78%
+        // 40.7MB  100.00%
+    </script>
+</body>
+
+</html>
