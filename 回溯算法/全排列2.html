@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个可包含重复数字的序列，返回所有不重复的全排列。</h1>
+
+    <script>
+        function permuteUnique(nums) {
+            let res = []
+            let tmpPath = []
+            let visited = []
+
+            function backTrack(arr, tmpPath, res, visited) {
+                if (tmpPath.length === arr.length) {
+                    res.push(JSON.stringify([...tmpPath]))
+                    return
+                }
+
+                for (let i = 0, len = arr.length; i < len; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, res, visited)
+                    tmpPath.pop()
+                    visited[i] = false
+                }
+            }
+            backTrack(nums, tmpPath, res, visited)
+            res = [...new Set(res)]
+            return res.map((item) => JSON.parse(item))
+        }
+
+        // 224 ms  14.76%
+        // 53.8 MB  100.00%
+
+
+        // 优化
+
+        function permuteUnique2(nums) {
+            let res = []
+            let tmpPath = []
+            let visited = []
+            let len = nums.length
+
+            function backTrack(arr, tmpPath, res, visited) {
+
+                if (tmpPath.length === len) {
+                    res.push(JSON.stringify([...tmpPath]))
+                    return
+                }
+                for (let i = 0; i < len; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, res, visited)
+                    tmpPath.pop()
+                    visited[i] = false
+                }
+            }
+
+            backTrack(nums, tmpPath, res, visited)
+            res = [...new Set(res)]
+            return res.map((item) => JSON.parse(item))
+        }
+
+        // 196 ms   16.79%
+        // 54.1 MB 100.00%
+    </script>
+</body>
+
+</html>

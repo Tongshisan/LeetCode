@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>输入一个字符串，打印出该字符串中字符的所有排列。</h1>
+    <h1>你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。</h1>
+
+    <script>
+        function permutation(s) {
+            let res = []
+            let visited = []
+            let tmpPath = []
+
+            function backTrack(arr, tmpPath, res, visited) {
+                if(arr.length === tmpPath.length) {
+                    // 说明走到底
+                    res.push(tmpPath.join(''))
+                    break
+                }
+                for(let i = 0, len = arr.length; i < len; i++) {
+                    if(visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, res, visited)
+                    tmpPath.pop()
+                    visited[i] = false
+                }
+            }
+
+            backTrack([...s], tmpPath, res, visited) 
+            return [...new Set(res)]
+        }
+
+        // 232 ms   27.30%
+        // 50.3MB  100.00%
+    </script>
+</body>
+</html>

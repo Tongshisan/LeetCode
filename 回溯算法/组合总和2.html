@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</h1>
+    <h1>candidates 中的每个数字在每个组合中只能使用一次。</h1>
+
+    <script>
+        function combinationSum2(candidates, target) {
+            let res = []
+            let tmpPath = []
+            let len = candidates.length
+            candidates.sort((a, b) => a - b)
+            function backTrack(tmpPath, target, start) {
+                if (target === 0) {
+                    res.push(tmpPath)
+                    return
+                }
+
+                for (let i = start; i < len; i++) {
+                    if (candidates[i] > target) break
+                    if (i > start && candidates[i] === candidates[i - 1]) continue
+                    tmpPath.push(candidates[i])
+                    backTrack(tmpPath.slice(), target - candidates[i], i + 1)
+                    tmpPath.pop()
+                }
+            }
+
+            backTrack(tmpPath, target, 0)
+            return res
+        }
+    </script>
+</body>
+
+</html>
