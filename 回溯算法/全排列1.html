@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个 没有重复 数字的序列，返回其所有可能的全排列。</h1>
+
+    <script>
+
+        function permute(nums) {
+            let res = []
+            let tmpPath = []
+            let visited = []
+            let len = nums.length
+            function backTrack(arr, tmpPath, visited) {
+                if (tmpPath.length === len) {
+                    res.push(JSON.stringify(tmpPath))
+                    return
+                }
+                for (let i = 0; i < len; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, visited)
+                    visited[i] = false
+                    tmpPath.pop()
+                }
+            }
+            backTrack(nums, tmpPath, visited)
+            return res.map((item) => JSON.parse(item))
+        }
+
+        // 120 ms   6.90%
+        // 40.8MB  20.00%
+
+        // 优化
+        function permute(nums) {
+            let res = []
+            let tmpPath = []
+            let visited = []
+            let len = nums.length
+            function backTrack(arr, tmpPath, visited) {
+                if (tmpPath.length === len) {
+                    res.push([...tmpPath])
+                    return
+                }
+                for (let i = 0; i < len; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, visited)
+                    visited[i] = false
+                    tmpPath.pop()
+                }
+            }
+            backTrack(nums, tmpPath, visited)
+            return res
+        }
+
+        // 96 ms  35.96%
+        // 41 MB  20.00%
+    </script>
+</body>
+
+</html>

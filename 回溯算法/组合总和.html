@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。</h1>
+    <h1>candidates 中的数字可以无限制重复被选取。</h1>
+    <script>
+        function combinationSum(candidates, target) {
+            let res = []
+            let tmpPath = []
+            let len = candidates.length
+
+            function backTrack(tmpPath, target, start) {
+                if (target < 0) return
+                if (target === 0) {
+                    res.push([...tmpPath])
+                    return
+                }
+
+                for (let i = start; i < len; i++) {
+                    tmpPath.push(candidates[i])
+                    backTrack(tmpPath, target - candidates[i], start++)
+                    tmpPath.pop()
+                }
+            }
+            backTrack(tmpPath, target, 0)
+            return res
+        }
+
+        // 108 ms  33.61%
+        // 39.9 MB  33.33%
+    </script>
+</body>
+
+</html>

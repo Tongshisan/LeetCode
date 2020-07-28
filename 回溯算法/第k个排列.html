@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给出集合 [1,2,3,…,n]，其所有元素共有 n! 种排列。</h1>
+    <h1>给定 n 和 k，返回第 k 个排列。</h1>
+
+    <script>
+        function getPermutation(n, k) {
+            let nums = []
+            for (let i = 1; i <= n; i++) {
+                nums.push(i)
+            }
+            let res = []
+            let tmpPath = []
+            let visited = []
+
+            function backTrack(arr, tmpPath, visited) {
+                if (tmpPath.length === n) {
+                    res.push(tmpPath.join(''))
+                    return
+                }
+                for (let i = 0; i < n; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, visited)
+                    tmpPath.pop()
+                    visited[i] = false
+                }
+            }
+            backTrack(nums, tmpPath, visited)
+            return res.sort((a, b) => a - b)[k - 1]
+        }
+        // 8916 ms  5.21%
+        // 71MB  33.33%
+
+
+        // 优化
+        function getPermutation2(n, k) {
+            let nums = []
+            for (let i = 1; i <= n; i++) {
+                nums.push(i)
+            }
+            // let res = []
+            let index = 0
+            let tmpPath = []
+            let visited = []
+
+            function backTrack(arr, tmpPath, visited) {
+                if (tmpPath.length === n) {
+                    // res.push(tmpPath.join(''))
+                    // return
+                    index++
+                    return
+                }
+                for (let i = 0; i < n; i++) {
+                    if (visited[i]) continue
+                    visited[i] = true
+                    tmpPath.push(arr[i])
+                    backTrack(arr, tmpPath, visited)
+                    if (index === k) return tmpPath.join('')
+                    tmpPath.pop()
+                    visited[i] = false
+                }
+            }
+            return backTrack(nums, tmpPath, visited)
+            // return res.sort((a, b) => a-b)[k-1]
+        }
+
+        // 836 ms   29.93%
+        // 37.7MB 33.33%
+    </script>
+</body>
+
+</html>
