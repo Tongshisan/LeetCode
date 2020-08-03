@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列</h1>
+    <h1>请你统计并返回 grid 中 负数 的数目。</h1>
+
+    <script>
+
+        function countNegatives(grid) {
+            let m = grid.length
+            let n = grid[0].length
+            let i = 0
+            let j = n-1
+            while(j >= 0 && i < m) {
+                if(grid[i][j] < 0) {
+                    res += m - i
+                    j--
+                } else {
+                    i++
+                }
+            }
+            return res
+        }
+        // 时间复杂度 O(m + n)
+        // 72 ms    83.01%
+        // 38.7MB  86.67%
+    </script>
+</body>
+</html>
