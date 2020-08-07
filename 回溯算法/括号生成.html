@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>括号。设计一种算法，打印n对括号的所有合法的（例如，开闭一一对应）组合。</h1>
+    <h1>说明：解集不能包含重复的子集。</h1>
+
+    <script>
+
+        function generateParenthesis(n) {
+            function fn(str) {
+                let arr = []
+                for (let i = 0, len = str.length; i < len; i++) {
+                    if (str[i] === '(') {
+                        arr.push('(')
+                    } else {
+                        if (!arr.pop()) return false
+                    }
+                }
+                if (arr.length) return false
+                return true
+            }
+
+            let res = []
+            let tmpPath = []
+
+            function backTrack(tmpPath) {
+                if (tmpPath.length === 2 * n) {
+                    if (fn(tmpPath.join(''))) res.push(tmpPath.join(''))
+                    return
+                }
+
+                tmpPath.push('(')
+                backTrack(tmpPath)
+                tmpPath.pop()
+
+                tmpPath.push(')')
+                backTrack(tmpPath)
+                tmpPath.pop()
+            }
+            backTrack(tmpPath)
+            return res
+        }
+
+        // 160 ms  5.49%
+        // 43.7 MB 7.14%
+    </script>
+</body>
+
+</html>

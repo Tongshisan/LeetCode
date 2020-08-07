@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>给定两个二叉树，编写一个函数来检验它们是否相同。</h1>
+    <h1>如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。</h1>
+
+    <script>
+        function isSameTree(p, q) {
+            function fn(root, arr) {
+                if (!root) {
+                    arr.push(null)
+                    return
+                }
+                let { left, right, val } = root
+                arr.push(val)
+                fn(left, arr)
+                fn(right, arr)
+            }
+            let pArr = []
+            let qArr = []
+            fn(p, pArr)
+            fn(q, qArr)
+            return pArr.join() === qArr.join() ? true : false
+        }
+    </script>
+</body>
+
+</html>
